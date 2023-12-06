@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "996907073550",
+    "project_id": "angga-57c3d",
+    "storage_bucket": "angga-57c3d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:996907073550:android:7bcd385085f8b9c5d6bc5f",
+        "android_client_info": {
+          "package_name": "com.mpt.gabut"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpVX3FG8i8OkWJluR3apy9W30Tw8sl0IY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
