@@ -29,6 +29,10 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mpt.gabut.ui.theme.GabutTheme
 import android.Manifest
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.ui.Alignment
+import com.google.firebase.firestore.Query
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +48,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    db.collection("notification").addSnapshotListener { snapshot, e ->
+                    db.collection("notification").orderBy("time", Query.Direction.DESCENDING).addSnapshotListener { snapshot, e ->
                         if (e != null) {
                             Log.w(TAG, "Listen failed.", e)
                             return@addSnapshotListener
@@ -56,9 +60,19 @@ class MainActivity : ComponentActivity() {
                             })
                         }
                     }
-                    LazyColumn{
-                        items(state.size){
-                            CardNotification(state[it])
+                    if (state.size > 0){
+                        LazyColumn{
+                            items(state.size){
+                                CardNotification(state[it])
+                            }
+                        }
+                    } else {
+                        Column(
+                            modifier = Modifier.fillMaxSize(),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(text = "Tidak ada data")
                         }
                     }
                 }
